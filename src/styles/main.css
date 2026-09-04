@@ -1,0 +1,126 @@
+/**
+ * Main stylesheet for the On Coder's MikroTik NOC application.
+ * Configures Tailwind CSS imports, custom typography faces (Space Mono & Ailerons),
+ * theme design tokens, and global layout styles.
+ */
+
+@import "tailwindcss";
+
+/**
+ * Custom typography font-face declarations
+ */
+@font-face {
+  font-family: "Space Mono";
+  src: url("../assets/fonts/SpaceMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("../assets/fonts/SpaceMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ailerons";
+  src: url("../assets/fonts/Ailerons-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/**
+ * Tailwind v4 theme configuration defining brand color scales,
+ * typography mappings, and semantic interface variables.
+ */
+@theme {
+  /* Brand typography families */
+  --font-mono: "Space Mono", monospace;
+  --font-sans: "Ailerons", sans-serif;
+
+  /* Official On Coder's color palette */
+  --color-brand-pear: #d2fc38;
+  --color-brand-turquoise: #21d8d3;
+  --color-brand-lavender: #d7d7f4;
+  --color-brand-rhythm: #7278a0;
+  --color-brand-dark: #161620;
+  --color-brand-violet: #683de5;
+
+  /* Semantic theme variables for light and dark mode support */
+  --color-canvas: var(--theme-canvas);
+  --color-surface: var(--theme-surface);
+  --color-primary: var(--theme-primary);
+  --color-accent: var(--theme-accent);
+  --color-main: var(--theme-main);
+  --color-muted: var(--theme-muted);
+}
+
+/**
+ * Theme color mappings for dark mode (default)
+ */
+:root,
+[data-theme="dark"] {
+  --theme-canvas: #161620; /* Eerie Black */
+  --theme-surface: #1e1e2d; /* Card surface */
+  --theme-primary: #683de5; /* Majorelle Violet */
+  --theme-accent: #d2fc38; /* Pear */
+  --theme-main: #d7d7f4; /* Pale Lavender */
+  --theme-muted: #7278a0; /* Rhythm */
+}
+
+/**
+ * Theme color mappings for light mode
+ */
+[data-theme="light"] {
+  --theme-canvas: #f8fafc; /* Pale Lavender */
+  --theme-surface: #ffffff; /* Clean white */
+  --theme-primary: #3b82f6; /* Majorelle Violet */
+  --theme-accent: #21d8d3; /* Bright Turquoise */
+  --theme-main: #0f172a; /* Eerie Black */
+  --theme-muted: #475569; /* Rhythm */
+}
+
+/**
+ * Global base styles
+ */
+body {
+  background-color: var(--theme-canvas);
+  color: var(--theme-main);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-mono);
+}
+
+/**
+ * Custom On Coder's scrollbars
+ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--theme-primary);
+  border-radius: 9999px;
+  opacity: 0.4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--theme-primary);
+  opacity: 0.8;
+}
